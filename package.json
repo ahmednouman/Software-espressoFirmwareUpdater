@@ -1,0 +1,48 @@
+{
+  "name": "flowwinfwupdater",
+  "version": "1.0.0",
+  "description": "Touch firmware update tool for windows users",
+  "main": "public/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.4",
+    "electron-builder": "^23.6.0",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "build": {
+    "appId": "com.TouchFirmwareUpdaterWin.espresso",
+    "productName": "espressoTFWU",
+    "extraFiles": [
+      {
+        "from": "./src/backend/firmwareUpdater",
+        "to": "resources/firmwareUpdater"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "./assets",
+        "to": "assets"
+      }
+    ],
+    "win": {
+      "requestedExecutionLevel": "requireAdministrator",
+      "target": [
+        "nsis",
+        "zip",
+        "portable"
+      ],
+      "icon": "./assets/appIconRound-1024@2x.icns"
+    },
+    "portable": {
+      "artifactName": "espressoTFWU.exe"
+    }
+  },
+  "dependencies": {
+    "ps-tree": "^1.2.0"
+  }
+}
